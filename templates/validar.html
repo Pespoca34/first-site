@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validar CPF</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            text-align: center;
+            margin: 50px;
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+            width: 10%;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Validador de CPF</h1>
+    <form action="/validar" method="POST">
+        <input type="text" name="cpf" placeholder="Digite o CPF" required>
+        <br>
+        <button type="submit">Validar CPF</button>
+    </form>
+
+    {% if dados %}
+        {% if dados.valid %}
+            <h2 style="color:green;">CPF Válido</h2>
+        {% else %}
+            <h2 style="color:red;">CPF Inválido</h2>
+        {% endif %}
+        {% if dados.tam %}
+            <h3 style="color:blue;">CPF com tamanho inválido</h3>
+        {% endif %}
+    {% endif %}
+
+    <br>
+    <a href="/">Voltar</a>  
+</body>
+</html>

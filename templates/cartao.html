@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerar Cartão</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Gerador de Cartão</h1>
+    <form action=/cartao method='POST'>
+        <button type="submit">Gerar Cartão</button>
+    </form>
+
+    {% if dados %}
+        <h2>Dados do Cartão</h2>
+        <p><strong>Número:</strong> {{ dados.numero }}</p>
+        <p><strong>Validade:</strong> {{ dados.validade }}</p>
+        <p><strong>CVV:</strong> {{ dados.cvv }}</p>
+    {% endif %}
+
+    <br>
+    <a href="/">Voltar</a>"
+</body>
+</html>
