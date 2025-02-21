@@ -3,8 +3,8 @@ from flask import render_template, request
 from cartao.cartao import CartaoValido
 from cpf.cpf import CpfValido
 from cpf.validar import ValidarCpf
-from cep.cep import CepValido
 from weather.weather import get_weather
+from cep.cep import CepValido
 
 
 @app.route('/')
@@ -67,3 +67,7 @@ def weather():
         dados = get_weather(cidade)
         
     return render_template('weather.html', dados=dados)
+
+@app.route('/email', methods=['GET','POST'])
+def email_checker():
+    return render_template('email.html')

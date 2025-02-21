@@ -1,5 +1,5 @@
-from cep.gerar import GeradorCep
-from cep.request import Request
+from gerar import GeradorCep
+from request import Request
 import asyncio
 
 class CepValido:

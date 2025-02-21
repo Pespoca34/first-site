@@ -23,6 +23,3 @@ def requested(email:str) -> dict:
 
 def search(email:str) -> dict:
     return requested(email)
-
-teste = 'pedrolucas.juliao@gmail.com'
-print(search(teste))
