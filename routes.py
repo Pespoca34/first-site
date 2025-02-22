@@ -31,7 +31,6 @@ def cep():
     if request.method == 'POST':
         dados = obter_dados()
 
-    print(dados)
     return render_template('cep.html', dados=dados)
 
 @app.route('/validar',methods=['GET','POST'])
