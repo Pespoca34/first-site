@@ -32,6 +32,19 @@
     </form>
 
     {% if dados %}
+        <h2>Resultado da Verificação</h2>
+        <p><strong>Sites vazados: {{ dados['found'] }}</strong></p>
+        <ul>
+        {% for item in dados['result'] %}
+            <li>
+                <strong>Site:</strong> {{ item['source']['name'] }} <br>
+                <strong>Data do vazamento:</strong> {{ item['source']['breach_date'] if item['source']['breach_date'] else 'Desconhecida' }} <br>
+                <strong>Senha vazada:</strong> {{ item['password'] if 'password' in item else 'Não disponível' }} <br>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>Por favor, insira um e-mail para verificar.</p>
     {% endif %}
 
     <br>

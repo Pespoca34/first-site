@@ -1,26 +1,28 @@
-from cep.gerar import GeradorCep
-from cep.request import Request
-import asyncio
+import sqlite3
+import random
+from dotenv import load_dotenv
+import os
 
-class CepValido:
-    def __init__(self):
-        self.url = 'https://viacep.com.br/ws/{}/json'
-        self.gerador = GeradorCep()
+load_dotenv()
 
-    async def validar_cep(self, cep):
-        url = self.url.format(cep)
-        response = await asyncio.to_thread(Request(url).get)
-        
-        if 'erro' not in response:
-            return response
-        else:
-            print(f'O CEP {cep} não é válido')
+def obter_dados():
+    path = os.getenv('CEP_DB_PATH')
+    conn = sqlite3.connect(path)
+    cursor = conn.cursor()
 
-    async def obter_cep(self):
-        while True:
-            task = [self.validar_cep(self.gerador.gerar_cep()) for _ in range(20)]
-            result = await asyncio.gather(*task)
+    cursor.execute('SELECT cep, estado, logradouro, bairro FROM ceps')
+    rows = cursor.fetchall()
 
-            for cep in result:
-                if cep:
-                    return cep
+    if rows:
+        random_row = random.choice(rows)
+        dados = {
+            'cep': random_row[0],
+            'estado': random_row[1],
+            'logradouro': random_row[2],
+            'bairro': random_row[3]
+        }
+    else:
+        dados = {}
+
+    conn.close()
+    return dados

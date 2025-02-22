@@ -17,7 +17,3 @@ def check_email(email):
     response = requests.get(url, headers=headers, params=querystring)
 
     print(response.json())
-
-def main():
-    email = input("Enter email to check: ")
-    check_email(email)

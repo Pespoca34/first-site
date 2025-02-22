@@ -4,8 +4,8 @@ from cartao.cartao import CartaoValido
 from cpf.cpf import CpfValido
 from cpf.validar import ValidarCpf
 from weather.weather import get_weather
-from cep.cep import CepValido
-
+from cep.cep import obter_dados
+from email_checker.email_checker import check_email
 
 @app.route('/')
 def home():
@@ -25,9 +25,14 @@ def cpf():
         dados = CpfValido().obter_cpf()
     return  render_template('cpf.html', dados=dados)
 
-@app.route('/cep', methods=['GET'])
+@app.route('/cep', methods=['GET','POST'])
 def cep():
-    return render_template('desenvolvimento.html')
+    dados = None
+    if request.method == 'POST':
+        dados = obter_dados()
+
+    print(dados)
+    return render_template('cep.html', dados=dados)
 
 @app.route('/validar',methods=['GET','POST'])
 def validar():
@@ -65,9 +70,15 @@ def weather():
     if request.method == 'POST':
         cidade = request.form.get('cidade')
         dados = get_weather(cidade)
-        
+
     return render_template('weather.html', dados=dados)
 
 @app.route('/email', methods=['GET','POST'])
 def email_checker():
-    return render_template('email.html')
+#     dados = None
+#     if request.method == 'POST':
+#         email = request.form.get('email')
+#         dados = check_email(email)  
+        
+#     return render_template('email.html', dados=dados)
+    return render_template('desenvolvimento.html')
