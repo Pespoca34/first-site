@@ -4,18 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerar CEP</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 50px;
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cep.css') }}"> 
 </head>
 <body>
     <h1>Gerador de CEP</h1>
@@ -24,11 +13,13 @@
     </form>
 
     {% if dados %}
-        <h2>CEP Gerado</h2>
-        <p><strong>CEP:</strong> {{ dados.cep }}</p>
-        <p><strong>Estado:</strong> {{ dados.estado }}</p>
-        <p><strong>Rua:</strong> {{ dados.logradouro }}</p>
-        <p><strong>Bairro:</strong> {{ dados.bairro }}</p>
+        <div class="resultado">
+            <h2>CEP Gerado</h2>
+            <p><strong>CEP:</strong> {{ dados.cep }}</p>
+            <p><strong>Estado:</strong> {{ dados.estado }}</p>
+            <p><strong>Rua:</strong> {{ dados.logradouro }}</p>
+            <p><strong>Bairro:</strong> {{ dados.bairro }}</p>
+        </div>
     {% endif %}
 
     <br>

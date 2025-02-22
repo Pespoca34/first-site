@@ -1,14 +1,28 @@
-<html>
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerador de Cartões e CPFs</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}"> 
 </head>
 <body>
+
+    <div class="stars"></div>
+    
     <h1>Bem-vindo ao Gerador de Cartões e CPFs</h1>
+    
     <a href="/cartao">Gerar Cartão</a> |
     <a href="/cpf">Gerar CPF</a> |
     <a href="/validar">Validar CPF</a> |
     <a href='/cep'>Gerar Cep</a> |
     <a href='/weather'>Verificar Clima</a> |
     <a href='/email'>Verificar Email</a> |
+
+    <div>
+        <img src="{{ url_for('static', filename='images/noel.gif') }}" alt="Imagem GIF ou Foto">
+    </div>
+
+    <script src="{{ url_for('static', filename='js/stars.js') }}"></script>
 </body>
 </html>

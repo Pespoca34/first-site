@@ -1,19 +1,9 @@
 import requests
-from dotenv import load_dotenv
-import os
 
-load_dotenv()
-
-def check_email(email):
-    url = "https://email-leak-search.p.rapidapi.com/api/search"
-
-    querystring = {"email":email}
-
-    headers = {
-    	"x-rapidapi-key": os.getenv('RAPID_API'),
-    	"x-rapidapi-host": os.getenv('RAPID_HOST')
-    }
-
-    response = requests.get(url, headers=headers, params=querystring)
-
-    print(response.json())
+def obter_email(email):
+    url = f'https://leakcheck.io/api/public?check={email}'
+    response = requests.get(url)
+    if response.status_code == 200:
+        return response.json()
+    else:
+        return {}

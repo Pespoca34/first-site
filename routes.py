@@ -5,7 +5,7 @@ from cpf.cpf import CpfValido
 from cpf.validar import ValidarCpf
 from weather.weather import get_weather
 from cep.cep import obter_dados
-from email_checker.email_checker import check_email
+from email_checker.email_checker import obter_email
 
 @app.route('/')
 def home():
@@ -75,9 +75,9 @@ def weather():
 @app.route('/email', methods=['GET','POST'])
 def email_checker():
 #     dados = None
-#     if request.method == 'POST':
-#         email = request.form.get('email')
-#         dados = check_email(email)  
-        
+#     email = request.form.get('email')
+#     if email:
+#         dados = obter_email(email)
+
 #     return render_template('email.html', dados=dados)
     return render_template('desenvolvimento.html')

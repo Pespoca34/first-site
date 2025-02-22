@@ -4,18 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerar CPF</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 50px;
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cpf.css') }}">
 </head>
 <body>
     <h1>Gerador de CPF</h1>
@@ -24,9 +13,11 @@
     </form>
 
     {% if dados %}
-        <h2>CPF Gerado</h2>
-        <p><strong>CPF:</strong> {{ dados.numero }}</p>
-        <p><strong>Região:</strong> {{ dados.regiao }}</p>
+        <div class="resultado">
+            <h2>CPF Gerado</h2>
+            <p><strong>CPF:</strong> {{ dados.numero }}</p>
+            <p><strong>Região:</strong> {{ dados.regiao }}</p>
+        </div>
     {% endif %}
 
     <br>
