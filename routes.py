@@ -38,12 +38,16 @@ def validar():
     dados = None
     if request.method == 'POST':
         cpf_digitado = request.form.get('cpf')
-        if len(cpf_digitado) != 11:
+        if len(cpf_digitado) < 11:
             dados = {
                 'tam': True
             }
             return render_template('validar.html', dados=dados)
-
+        elif len(cpf_digitado) > 14:
+            dados = {
+                'tam': True
+            }
+            return render_template('validar.html', dados=dados)
 
         validador = ValidarCpf(cpf_digitado)
         resultado = validador.validar_cpf()
@@ -74,10 +78,10 @@ def weather():
 
 @app.route('/email', methods=['GET','POST'])
 def email_checker():
-#     dados = None
-#     email = request.form.get('email')
-#     if email:
-#         dados = obter_email(email)
+    dados = None
+    email = request.form.get('email')
+    if email:
+        dados = obter_email(email)
 
-#     return render_template('email.html', dados=dados)
-    return render_template('desenvolvimento.html')
+    print(dados)
+    return render_template('email.html', dados=dados)
